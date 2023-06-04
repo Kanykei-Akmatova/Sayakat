@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+<body>
+
+<div class="container">
+  <ul class="nav bg-info">
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/">HOME</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/saykat/bookings">BOOKINGS</a>
+    </li>
+  </ul>
+
+  {% block content %}
+    <h1>My booking list</h1>
+
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Date</th>
+          <th scope="col">Description</th>
+          <th scope="col">Package</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for b in bookings_list %}
+        <tr>
+            <th scope="row">1</th>
+            <td>{{ b.name }}</td>
+            <td>{{ b.date }}</td>
+            <td>{{ b.description }}</td>
+            <td>{{ b.package.name }} </td>
+        </tr>
+      {% endfor %}
+
+      </tbody>
+    </table>
+
+  {% endblock %}
+</div>
+
+</body>
+</html>
