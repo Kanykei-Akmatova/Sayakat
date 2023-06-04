@@ -26,6 +26,7 @@
           <div class="row mb-3">
             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
+              <input type="hidden" class="form-control" id="inputCustomer" value="1">
               <input type="text" class="form-control" id="inputName">
             </div>
           </div>
@@ -44,21 +45,11 @@
           <div class="row mb-3">
             <label for="inputPackage" class="col-sm-2 col-form-label">Package</label>
             <div class="col-sm-10">
-              <select class="form-control" id="inputPackage">
+              <select class="form-select" aria-label="Default select example" id="inputPackage">
+                   <option selected>Open and select a package</option>
                   {% for p in package_list %}
                     <option value="{{ p.id }}">{{ p.name }}</option>
                   {% endfor %}
-              </select>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="inputCustomer" class="col-sm-2 col-form-label">Customer</label>
-            <div class="col-sm-10">
-              <select name="cars" id="inputCustomer">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
               </select>
             </div>
           </div>
