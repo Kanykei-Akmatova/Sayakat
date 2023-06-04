@@ -5,6 +5,7 @@
   {% load bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -29,19 +30,34 @@
           <th scope="col">Date</th>
           <th scope="col">Description</th>
           <th scope="col">Package</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
       {% for b in bookings_list %}
         <tr>
-            <th scope="row">1</th>
+            <th scope="row">{{ 1 }}</th>
             <td>{{ b.name }}</td>
             <td>{{ b.date }}</td>
             <td>{{ b.description }}</td>
             <td>{{ b.package.name }} </td>
+            <td><button class="btn"><i class="fa fa-trash"></i></button></td>
         </tr>
       {% endfor %}
-
+      <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <button class="btn">
+                    <a href="/saykat/bookings/add">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </a>
+                </button>
+            </td>
+        </tr>
       </tbody>
     </table>
 

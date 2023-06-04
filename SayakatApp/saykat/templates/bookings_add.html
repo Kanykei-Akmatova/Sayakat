@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div class="container">
+  <ul class="nav bg-info">
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/">HOME</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/saykat/bookings">BOOKINGS</a>
+    </li>
+  </ul>
+
+  {% block content %}
+    <h1>Add booking</h1>
+
+          <form>
+          <div class="row mb-3">
+            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputName">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputDescription">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="inputDate">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputPackage" class="col-sm-2 col-form-label">Package</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="inputPackage">
+                  {% for p in package_list %}
+                    <option value="{{ p.id }}">{{ p.name }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputCustomer" class="col-sm-2 col-form-label">Customer</label>
+            <div class="col-sm-10">
+              <select name="cars" id="inputCustomer">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+  {% endblock %}
+</div>
+
+</body>
+</html>
