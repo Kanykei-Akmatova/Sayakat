@@ -22,40 +22,41 @@
   {% block content %}
     <h1>Add booking</h1>
 
-          <form>
-          <div class="row mb-3">
-            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-            <div class="col-sm-10">
-              <input type="hidden" class="form-control" id="inputCustomer" value="1">
-              <input type="text" class="form-control" id="inputName">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputDescription">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
-            <div class="col-sm-10">
-              <input type="date" class="form-control" id="inputDate">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="inputPackage" class="col-sm-2 col-form-label">Package</label>
-            <div class="col-sm-10">
-              <select class="form-select" aria-label="Default select example" id="inputPackage">
-                   <option selected>Open and select a package</option>
-                  {% for p in package_list %}
-                    <option value="{{ p.id }}">{{ p.name }}</option>
-                  {% endfor %}
-              </select>
-            </div>
-          </div>
+          <form method="post">
+            {% csrf_token %}
+              <input type="hidden" class="form-control" id="customer" name="customer" value="1">
+              <div class="row mb-3">
+                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="name" name="name">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="description" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="description" name="description">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="date" class="col-sm-2 col-form-label">Date</label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="date" name="date">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="package" class="col-sm-2 col-form-label">Package</label>
+                <div class="col-sm-10">
+                  <select class="form-select" aria-label="Default select example" id="package" name="package">
+                       <option selected>Open and select a package</option>
+                      {% for p in package_list %}
+                        <option value="{{ p.id }}">{{ p.name }}</option>
+                      {% endfor %}
+                  </select>
+                </div>
+              </div>
 
-          <button type="submit" class="btn btn-primary">Add</button>
-        </form>
+              <button type="submit" class="btn btn-primary">Add</button>
+          </form>
 
   {% endblock %}
 </div>
