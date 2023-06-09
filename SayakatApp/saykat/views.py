@@ -30,9 +30,7 @@ def add_bookings(request):
                               package=package,
                               customer=customer)
             booking.save()
-            # return HttpResponse("add_bookings successfully")
             return HttpResponseRedirect("/bookings/list")
-            return redirect('/new/path/')
         else:
             errors = form.errors
             # You can iterate over the errors for each field
@@ -48,3 +46,8 @@ def add_bookings(request):
             'package_list': package_list,
         }
         return HttpResponse(template.render(context, request))
+
+
+def delete_bookings(request, booking_id):
+    Booking.objects.get(id=booking_id).delete()
+    return HttpResponseRedirect("/bookings/list")

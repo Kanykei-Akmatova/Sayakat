@@ -15,7 +15,7 @@
       <a class="nav-link link-light" href="/">HOME</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link link-light" href="/saykat/bookings">BOOKINGS</a>
+      <a class="nav-link link-light" href="/bookings/list">BOOKINGS</a>
     </li>
   </ul>
 
@@ -41,7 +41,12 @@
             <td>{{ b.date }}</td>
             <td>{{ b.description }}</td>
             <td>{{ b.package.name }} </td>
-            <td><button class="btn"><i class="fa fa-trash"></i></button></td>
+            <td>
+                <button class="btn">
+                    <a href="/bookings/delete/{{ b.id }}">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </button></td>
         </tr>
       {% endfor %}
       <tr>
