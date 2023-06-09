@@ -6,6 +6,7 @@
   {% bootstrap_css %}
   {% bootstrap_javascript %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 
@@ -20,7 +21,7 @@
   </ul>
 
   {% block content %}
-    <h1>Add booking</h1>
+    <h1>Add travel booking</h1>
 
           <form method="post">
             {% csrf_token %}
@@ -60,6 +61,6 @@
 
   {% endblock %}
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>

@@ -22,7 +22,7 @@
   {% block content %}
     <h1>My booking list</h1>
 
-    <table class="table">
+    <table class="table" id="bookingTable">
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>
@@ -36,7 +36,7 @@
       <tbody>
       {% for b in bookings_list %}
         <tr>
-            <th scope="row">{{ 1 }}</th>
+            <td></td>
             <td>{{ b.name }}</td>
             <td>{{ b.date }}</td>
             <td>{{ b.description }}</td>
@@ -50,7 +50,7 @@
         </tr>
       {% endfor %}
       <tr>
-            <th scope="row"></th>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -68,6 +68,25 @@
 
   {% endblock %}
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+      // Function to add auto numbering to table rows
+      function addRowNumbers() {
+          let rowCount = $('#bookingTable tbody tr').length - 1;
+
+          $('#bookingTable tbody tr').each(function (index) {
+              if(rowCount > 0) {
+                  $(this).find('td:first').text(index + 1);
+              }
+              rowCount--;
+          });
+      }
+
+      // Call the function initially
+      addRowNumbers();
+  });
+</script>
 
 </body>
 </html>
