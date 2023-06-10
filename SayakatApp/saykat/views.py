@@ -1,9 +1,8 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 
-from .forms import UserRegistrationForm, BookingForm
+from .forms import BookingForm
 from .models import Booking, Package, Customer
-from django.contrib import messages
 
 
 def bookings(request):
@@ -60,20 +59,4 @@ def packages(request):
     context = {
         'packages_list': packages_list,
     }
-    return HttpResponse(template.render(context, request))
-
-
-def register(request):
-    if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-
-            messages.success(request, f'Your account has been created. You can log in now!')
-            return HttpResponseRedirect('login')
-    else:
-        form = UserRegistrationForm()
-
-    template = loader.get_template('register.html')
-    context = {'form': form}
     return HttpResponse(template.render(context, request))
