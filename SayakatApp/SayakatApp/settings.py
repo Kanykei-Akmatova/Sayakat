@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sayakat',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'bogo',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
@@ -130,3 +130,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = '/login'
