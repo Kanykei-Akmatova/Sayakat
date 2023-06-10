@@ -51,3 +51,13 @@ def add_bookings(request):
 def delete_bookings(request, booking_id):
     Booking.objects.get(id=booking_id).delete()
     return HttpResponseRedirect("/bookings/list")
+
+
+def packages(request):
+    packages_list = Package.objects.all()
+
+    template = loader.get_template('packages_list.html')
+    context = {
+        'packages_list': packages_list,
+    }
+    return HttpResponse(template.render(context, request))

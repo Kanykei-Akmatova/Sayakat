@@ -23,7 +23,7 @@
   </ul>
 
   {% block content %}
-    <h1>My booking list</h1>
+    <h1>Travel packages</h1>
 
     <table class="table" id="bookingTable">
       <thead class="thead-light">
@@ -32,40 +32,17 @@
           <th scope="col">Name</th>
           <th scope="col">Date</th>
           <th scope="col">Description</th>
-          <th scope="col">Package</th>
-          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-      {% for b in bookings_list %}
+      {% for b in packages_list %}
         <tr>
             <td></td>
             <td>{{ b.name }}</td>
             <td>{{ b.date }}</td>
-            <td>{{ b.description }}</td>
-            <td>{{ b.package.name }} </td>
-            <td>
-                <button class="btn">
-                    <a href="/bookings/delete/{{ b.id }}">
-                        <i class="fa fa-trash"></i>
-                    </a>
-                </button></td>
+            <td>{{ b.description }}
         </tr>
       {% endfor %}
-      <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <button class="btn">
-                    <a href="/bookings/add">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </a>
-                </button>
-            </td>
-        </tr>
       </tbody>
     </table>
 
@@ -76,13 +53,8 @@
   $(document).ready(function() {
       // Function to add auto numbering to table rows
       function addRowNumbers() {
-          let rowCount = $('#bookingTable tbody tr').length - 1;
-
           $('#bookingTable tbody tr').each(function (index) {
-              if(rowCount > 0) {
-                  $(this).find('td:first').text(index + 1);
-              }
-              rowCount--;
+              $(this).find('td:first').text(index + 1);
           });
       }
 
