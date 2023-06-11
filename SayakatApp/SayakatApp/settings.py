@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sayakat',
         'USER': 'root',
-        'PASSWORD': 'bogo',
+        'PASSWORD': 'gogo',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
@@ -132,5 +132,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/bookings/list'
+LOGOUT_REDIRECT_URL = 'saykat-home'
+

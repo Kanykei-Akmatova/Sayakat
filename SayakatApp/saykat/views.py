@@ -1,26 +1,49 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.contrib.auth.models import User
 
 from .forms import BookingForm
-from .models import Booking, Package, Customer
+from .models import Booking, Package
+
+
+def index(request):
+    packages_list = Package.objects.all()
+
+    template = loader.get_template('index.html')
+    context = {
+        'packages_list': packages_list,
+    }
+    return HttpResponse(template.render(context, request))
 
 
 def bookings(request):
-    bookings_list = Booking.objects.all()
+    try:
+        customer_id = request.user.id
+        bookings_list = Booking.objects.filter(customer_id=customer_id)
 
-    template = loader.get_template('bookings_list.html')
-    context = {
-        'bookings_list': bookings_list,
-    }
-    return HttpResponse(template.render(context, request))
+        print(customer_id)
+
+        template = loader.get_template('bookings_list.html')
+        context = {
+            'bookings_list': bookings_list,
+        }
+        return HttpResponse(template.render(context, request))
+    except Booking.DoesNotExist:
+        template = loader.get_template('bookings_list.html')
+        context = {
+            'bookings_list': [],
+        }
+        return HttpResponse(template.render(context, request))
 
 
 def add_bookings(request):
     if request.method == "POST":
         form = BookingForm(request.POST)
         if form.is_valid():
+            customer_id = request.user.id
+            print(customer_id)
+            customer = User.objects.get(id=customer_id)
             package = Package.objects.get(id=form.cleaned_data['package'])
-            customer = Customer.objects.get(id=form.cleaned_data['customer'])
 
             # Create and save the model instance
             booking = Booking(name=form.cleaned_data['name'],

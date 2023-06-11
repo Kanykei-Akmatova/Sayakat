@@ -6,4 +6,3 @@ class BookingForm(forms.Form):
     description = forms.CharField(required=True, max_length=255)
     date = forms.DateField(required=True)
     package = forms.IntegerField(required=True)
-    customer = forms.IntegerField(required=True)

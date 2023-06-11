@@ -1,12 +1,5 @@
+from django.conf import settings
 from django.db import models
-
-
-class Customer(models.Model):
-    name = models.CharField(max_length=50)
-    date = models.DateTimeField()
-
-    def __str__(self):
-        return self.name
 
 
 class Hotel(models.Model):
@@ -46,7 +39,8 @@ class Booking(models.Model):
     date = models.DateTimeField()
     description = models.CharField(max_length=255)
     package = models.ForeignKey(Package, on_delete=models.CASCADE)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    # customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
