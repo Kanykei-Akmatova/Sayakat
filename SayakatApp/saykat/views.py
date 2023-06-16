@@ -12,6 +12,7 @@ def index(request):
     template = loader.get_template('index.html')
     context = {
         'packages_list': packages_list,
+        'user_id': request.user.id
     }
     return HttpResponse(template.render(context, request))
 
