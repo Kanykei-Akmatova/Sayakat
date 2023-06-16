@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    {% block content %}
+<div class="container">
     <ul class="nav bg-info">
         <li class="nav-item">
           <a class="nav-link link-light" href="/">HOME</a>
@@ -17,6 +17,9 @@
           <a class="nav-link link-light" href="/login">LOGIN</a>
         </li>
     </ul>
+
+    {% block content %}
+
 
     <div class="d-flex justify-content-center">
         <h3>Login:</h3>
@@ -38,6 +41,6 @@
     </div>
 
 {% endblock %}
-
+</div>
 </body>
 </html>

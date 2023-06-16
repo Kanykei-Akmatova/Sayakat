@@ -14,17 +14,25 @@
     <li class="nav-item">
       <a class="nav-link link-light" href="/">HOME</a>
     </li>
-    <li class="nav-item ms-auto mb-1 mb-lg-6">
       {% if user_id is None %}
-         <a class="nav-link link-light" href="/login">LOGIN</a>
+        <li class="nav-item ms-auto mb-1 mb-lg-6">
+          <a class="nav-link link-light" href="/login">LOGIN</a>
+        </li>
       {% else %}
-         <a class="nav-link link-light" href="/logout">LOGOUT</a>
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/bookings/list">TRAVEL BOOKINGS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/packages/list">TRAVEL PACKAGES</a>
+          </li>
+          <li class="nav-item ms-auto mb-1 mb-lg-6">
+            <a class="nav-link link-light" href="/logout">LOGOUT</a>
+          </li>
       {% endif %}
-    </li>
   </ul>
 
   {% block content %}
-    <h1>Book your next travel with Saykat !!!</h1>
+    <h1>Book your next travel with Sayakat !!!</h1>
 
     <table class="table" id="bookingTable">
       <thead class="thead-light">
