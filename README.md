@@ -1,8 +1,12 @@
 # Sayakat
 
+### “Sayakat” means travel in the Kyrgyz language. 
+### The purpose of this web application is to make travelling smooth and exciting for people who are interested in travelling to Kyrgyzstan.
+
 Adjust the code below according to your needs in settings.py
 
-`DATABASES = {
+`
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sayakat',
@@ -14,7 +18,8 @@ Adjust the code below according to your needs in settings.py
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
     }
-}`
+}
+`
 
 ## Run as the docker container
 
